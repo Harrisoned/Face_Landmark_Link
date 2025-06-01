@@ -295,7 +295,7 @@ with open(output_csv_path, 'w', newline='') as csv_file:
             # print ("left iris: " + str(left_iris))
             
             # Iterate through the face blendshapes starting from index 1 to skip the neutral shape
-            for face_blendshapes_category in face_blendshapes:
+            for face_blendshapes_category in face_blendshapes[1:]:
                 blendshape_name = face_blendshapes_category.category_name
                 blendshape_score = face_blendshapes_category.score
                 formatted_score = "{:.8f}".format(blendshape_score)
@@ -308,12 +308,12 @@ with open(output_csv_path, 'w', newline='') as csv_file:
 
                  
             #The order of the indexes in this list needs to be remade
-            new_order = [8, 10, 12, 14, 16, 18, 20, 9, 11, 13, 15, 17, 19, 21, 22, 25, 23, 24, 26, 31, 37, 38, 32, 43, 44, 29, 30, 27, 28, 45, 46, 39, 40, 41, 42, 35, 36, 33, 34, 47, 48, 50, 1, 2, 3, 4, 5, 6, 7, 49, 50]
+            new_order = [9, 11, 13, 15, 17, 19, 21, 10, 12, 14, 16, 18, 20, 22, 23, 26, 24, 25, 27, 32, 38, 39, 33, 44, 45, 30, 31, 28, 29, 46, 47, 40, 41, 42, 43, 36, 37, 34, 35, 48, 49, 1, 2, 3, 4, 5, 6, 7, 8, 50, 51]
             all_blendshape_scores_sorted =[all_blendshape_scores[i] for i in new_order]
             print("New one: " + str(all_blendshape_scores_sorted))
 
-            num_blendshapes = len(face_blendshapes)  # Exclude the first blendshape (neutral shape)
-            print("Number of found blendshapes:", num_blendshapes)    
+            num_blendshapes = len(face_blendshapes[1:])  # Exclude the first blendshape (neutral shape)
+            print("Number of found blendshapes:", num_blendshapes)
 
             # Tongue
             tongue = [0]
